@@ -1,8 +1,9 @@
 import "./style.css";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import * as THREE from "three";
-import moonTexture from "../assets/img/moon.png";
+import moonTexture from "../assets/img/moon-texture.jpg";
 import moonMap from "../assets/img/moon-map.jpg";
+import background from "../assets/img/stars.png";
 
 // Crete new scene
 const scene = new THREE.Scene();
@@ -11,7 +12,7 @@ const scene = new THREE.Scene();
 const geometry = new THREE.SphereGeometry(3, 64, 64);
 
 //Load textures
-const textuerLoader = new THREE.TextureLoader();
+const textureLoader = new THREE.TextureLoader();
 const texture = textureLoader.load(moonTexture);
 const displacementMap = textureLoader.load(moonMap);
 
@@ -50,11 +51,12 @@ scene.add(camera);
 
 //Renderer
 const canvas = document.querySelector("#webgl");
-const renderer = new THREE.WebGL1Renderer({
+const renderer = new THREE.WebGLRenderer({
   canvas: canvas,
   antialias: true,
+  alpha: true,
 });
-
+renderer.setClearColor(0xffffff, 0); //set  background to transparent, (alpha needs to be true)
 renderer.setSize(w, h);
 renderer.render(scene, camera);
 
@@ -83,8 +85,7 @@ window.addEventListener("resize", () => {
 //Animate rotation and update scene
 const loop = () => {
   mesh.rotation.y += 0.001;
-  renderer;
-  render(scene, camera);
+  renderer.render(scene, camera);
   window.requestAnimationFrame(loop);
 };
 
