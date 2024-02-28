@@ -24,6 +24,9 @@ const material = new THREE.MeshStandardMaterial({
   displacementScale: 0.05,
   bumpMap: displacementMap,
   bumpScale: 0.04,
+
+  // emissive: new THREE.Color(0xffffff), // Set emissive color to white
+  // emissiveIntensity: 0, // Adjust the intensity to make it brighter (you can experiment with this value)
 });
 
 const mesh = new THREE.Mesh(geometry, material);

@@ -59,9 +59,9 @@ header {
 }
 @media screen and (max-width: 800px) {
   text h1 {
-    font-size: 3.4em;
+    font-size: 3, 4em;
   }
   .text p {
-    font-size: 3.4em;
+    font-size: 3, 4em;
   }
 }
